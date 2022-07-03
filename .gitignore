@@ -1,4 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Khai báo các folder, file không đưa lên github
+# package.json Khai báo thông tin của các thư viện dùng trong dự án
 
 # dependencies
 /node_modules
