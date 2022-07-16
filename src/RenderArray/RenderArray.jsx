@@ -12,8 +12,30 @@ export default class RenderArray extends Component {
     renderCar = () => {
         let trArray = [];
         // forof
-        for (const car of this.cars) {
-            let trObj = <tr key={car.id}>
+        // for (const car of this.cars) {
+        //     let trObj = <tr key={car.id}>
+        //         <td>{car.name}</td>
+        //         <td>
+        //             <img style={{ width: "500px" }} src={car.img} alt="" />
+        //         </td>
+        //         <td>
+        //             {car.price}
+        //         </td>
+        //     </tr>
+
+        //     trArray.push(trObj)
+        // }
+
+        // return trArray;
+
+
+        // map(): duyệt mảng, trả về 1 mảng mới 
+        //=> return không dừng hàm map mà chỉ dừng khi hết mảng => trả về mảng mới
+
+        //? trả kết quả cuối cùng ra khỏi method renderCar
+       return this.cars.map((car) => {
+            //? trả về mảng mới chứa các đối tượng thẻ tr
+            return <tr key={car.id}>
                 <td>{car.name}</td>
                 <td>
                     <img style={{ width: "500px" }} src={car.img} alt="" />
@@ -22,11 +44,10 @@ export default class RenderArray extends Component {
                     {car.price}
                 </td>
             </tr>
+            // trArray.push(trObj)
+        });
+        // return trArray;
 
-            trArray.push(trObj)
-        }
-
-        return trArray;
     }
     render() {
         console.log(<div></div>);//div là đối tương JSX

@@ -10,26 +10,16 @@ import DemoState from './DemoState/DemoState';
 import TangGiamFont from './DemoState/TangGiamFont';
 import ChangeCar from './DemoState/ChangeCar';
 import RenderArray from './RenderArray/RenderArray';
+import DemoProps from './DemoProps/DemoProps';
+import ShoesStore from './DemoProps/ShoesStore/ShoesStore';
 
 //App là component chính sẽ chứa tất cả các component chức năng của dự án
 function App() {
   return (
     <div className="App">
+      <ShoesStore/>
+        {/* <DemoProps/> */}
 
-    <RenderArray/>
-    {/* <ChangeCar/> */}
-      {/* <TangGiamFont/> */}
-        {/* <DemoState/> */}
-
-      {/* <StyledComponent/>
-      <h1 className='heading1'>AppComponent</h1> */}
-      {/* <h2 className={styleModule.styleFS}>demo styled module</h2> */}
-      {/* <HandleEvent/> */}
-      {/* <DataBinding/> */}
-      {/* <HomeComponent/> */}
-        {/* <NavbarRCC></NavbarRCC> */}
-        {/* <NavbarRCC/>
-        <CardRFC/> */}
     </div>
   );
 }
