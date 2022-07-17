@@ -12,12 +12,14 @@ import ChangeCar from './DemoState/ChangeCar';
 import RenderArray from './RenderArray/RenderArray';
 import DemoProps from './DemoProps/DemoProps';
 import ShoesStore from './DemoProps/ShoesStore/ShoesStore';
+import BTGioHang from './DemoProps/BTGioHang/BTGioHang';
 
 //App là component chính sẽ chứa tất cả các component chức năng của dự án
 function App() {
   return (
     <div className="App">
-      <ShoesStore/>
+      <BTGioHang/>
+      {/* <ShoesStore/> */}
         {/* <DemoProps/> */}
 
     </div>
