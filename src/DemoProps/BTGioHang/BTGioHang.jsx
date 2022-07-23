@@ -74,13 +74,21 @@ export default class BTGioHang extends Component {
         // let indexSPXoa = gioHangUpdate.findIndex((product) => { 
         //     return product.maSP === maSPXoa;
         //  });
-         let indexSPXoa = gioHangUpdate.findIndex(product =>  product.maSP === maSPXoa);
-        console.log(indexSPXoa);
+        //  let indexSPXoa = gioHangUpdate.findIndex(product =>  product.maSP === maSPXoa);
+        // console.log(indexSPXoa);
 
-         if(indexSPXoa > -1){
-            //tìm thấy vị trí
-            gioHangUpdate.splice(indexSPXoa,1);
-         }
+        //  if(indexSPXoa > -1){
+        //     //tìm thấy vị trí
+        //     gioHangUpdate.splice(indexSPXoa,1);
+
+        //  }
+
+        //Lọc ra các sản phẩm có mã SP khác với sản phẩm cần xóa (maSPXoa)
+        //mảng mới sẽ không chứa sp có maSPXoa
+         gioHangUpdate = gioHangUpdate.filter((product)=>{
+            return product.maSP !==maSPXoa;
+        })
+
 
          this.setState({
             gioHang:gioHangUpdate
@@ -100,12 +108,41 @@ export default class BTGioHang extends Component {
         if(productFind){
             // soLuong: 2 + -1 => 2- 1 =1
             productFind.soLuong += sl;
+            if(productFind.soLuong < 1){
+                alert("Số lượng không đúng");
+                // 0 - -1 => 0 +  1 => 1
+                //khi sản phẩm về 0 mà còn tiếp tục giảm
+                //=> xử lý code để không giảm nữa 
+                productFind.soLuong -= sl;
+            }
         }
 
         this.setState({
             gioHang:gioHangUpdate
         })
     }
+
+    /**
+     * sum =0
+     * Duyệt mảng giỏ hàng => lấy từng sản phẩm => sp
+     *      lấy thuộc tính soLuong của từng sản phẩm => sp.soLuong
+     *      cộng tổng của thuộc tính soLuong => sum += sp.soLuong
+     */
+    tinhTongSL = () => {
+        // reduce: duyệt mảng, lấy từng phần tử, dựa vào công thức tính của dev => return về kết quả tính cuối cùng
+        /**
+         * reduce((kết quả, item, index) => {
+                return công thức tính toán
+            }, giá trị mặc định của kết quả)
+         */
+        let {gioHang} = this.state;
+        let total =  gioHang.reduce((sum, sp, index) => {
+            return sum += sp.soLuong;
+        }, 0);
+
+        return total;
+    }
+
 
     render() {
         return (
@@ -139,7 +176,7 @@ export default class BTGioHang extends Component {
                                     <a className="nav-link disabled">Disabled</a>
                                 </li>
                             </ul>
-                            <p className='text-white'>Giỏ hàng (0)</p>
+                            <p className='text-white'>Giỏ hàng ({this.tinhTongSL()})</p>
                         </div>
                     </nav>
 

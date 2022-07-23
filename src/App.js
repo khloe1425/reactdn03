@@ -13,12 +13,22 @@ import RenderArray from './RenderArray/RenderArray';
 import DemoProps from './DemoProps/DemoProps';
 import ShoesStore from './DemoProps/ShoesStore/ShoesStore';
 import BTGioHang from './DemoProps/BTGioHang/BTGioHang';
+import TangGiamSoLuong from './DemoRedux/TangGiamSoLuong';
+import BTGioHangRedux from './DemoRedux/BTGioHangRedux/BTGioHangRedux';
 
 //App là component chính sẽ chứa tất cả các component chức năng của dự án
 function App() {
   return (
     <div className="App">
-      <BTGioHang/>
+
+    <BTGioHangRedux/>
+
+
+      {/* <TangGiamSoLuong/> */}
+
+
+
+      {/* <BTGioHang/> */}
       {/* <ShoesStore/> */}
         {/* <DemoProps/> */}
 
