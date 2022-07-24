@@ -15,18 +15,34 @@ class GioHang extends Component {
             <td>{tenSP}</td>
             <td>
                 <button onClick={() => { 
-                   
+                     const action ={
+                      type:"TANG_GIAM",
+                      sl:-1,
+                      maSPSL:maSP
+                    }
+                    this.props.dispatch(action)
+                    
                  }} className='btn btn-danger'>-</button>
                 <span>{soLuong}</span>
                 <button onClick={() => { 
-                   
+                   const action ={
+                     type:"TANG_GIAM",
+                     sl:1,
+                     maSPSL:maSP
+                   }
+                   this.props.dispatch(action)
                 }} className='btn btn-success'>+</button>
             </td>
             <td>{giaBan.toLocaleString()}</td>
             <td>{(giaBan * soLuong).toLocaleString()}</td>
             <td>
                 <button onClick={() => { 
-                    
+                    console.log(maSP);
+                    const action ={
+                      type:"XOA_GIO_HANG",
+                      maSPXoa:maSP
+                    }
+                    this.props.dispatch(action);
                  }} className='btn btn-danger'>Xóa</button>
             </td>
         </tr>

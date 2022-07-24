@@ -4,9 +4,8 @@
 
 import { combineReducers,createStore } from "redux";
 
-const gioHang = [
-    { "maSP": 1, "tenSP": "VinSmart Live", "giaBan": 5700000, "hinhAnh": "./img/phone/vsphone.jpg","soLuong":1 }
-]
+import { gioHangReducer } from "./reducers/gioHangReducer";
+
 
 const rootReducers = combineReducers({
     //Các state của ứng dụng
@@ -31,11 +30,13 @@ const rootReducers = combineReducers({
 
     // stateGH:()=>{}
     // stateLogin:()=>{}
+    // object literal
+    // gioHangReducer: gioHangReducer
+    gioHangReducer,
 
-    gioHangReducer: (state=gioHang) => { 
-            return state;
-     }
-
+    //  QLNDReducer,
+    //  QLDH,
+    //  QLSP,
 
 
 

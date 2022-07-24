@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import GioHang from './GioHang';
 import ProductList from './ProductList';
 
-export default class BTGioHangRedux extends Component {
+
+import { connect } from 'react-redux';
+
+ class BTGioHangRedux extends Component {
     //không thay đổi => không cần lưu trong state => không cần đưa lên redux
     //để cho ProductList sử dụng => truyền vào prop của con 
     phoneArray = [
@@ -11,7 +14,15 @@ export default class BTGioHangRedux extends Component {
         { "maSP": 3, "tenSP": "Iphone XS Max", "manHinh": "OLED, 6.5, 1242 x 2688 Pixels", "heDieuHanh": "iOS 12", "cameraSau": "Chính 12 MP & Phụ 12 MP", "cameraTruoc": "7 MP", "ram": "4 GB", "rom": "64 GB", "giaBan": 27000000, "hinhAnh": "./img/phone/applephone.jpg" }
     ];
 
+    tinhTongSL = () => {
+        
+        let {gioHang} = this.props;
+        return gioHang.reduce((sum,product,index)=> sum += product.soLuong , 0);
+
+    }
+    
     render() {
+        console.log(this.props)
         return (
             <div className='container'>
                 <header>
@@ -43,7 +54,7 @@ export default class BTGioHangRedux extends Component {
                                     <a className="nav-link disabled">Disabled</a>
                                 </li>
                             </ul>
-                            <p className='text-white'>Giỏ hàng (0)</p>
+                            <p className='text-white'>Giỏ hàng ({this.tinhTongSL()})</p>
                         </div>
                     </nav>
 
@@ -55,3 +66,13 @@ export default class BTGioHangRedux extends Component {
         )
     }
 }
+
+//rootReducers : reducer tổng => lấy được tất cả các reducers
+const mapStateToProps = (rootReducers) => {
+    return {
+        gioHang: rootReducers.gioHangReducer
+    }
+}
+
+export default connect(mapStateToProps)(BTGioHangRedux);
+
